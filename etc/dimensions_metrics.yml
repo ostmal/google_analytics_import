@@ -1,0 +1,36 @@
+# --- Перечень всех Dimensions & Metrics, которые будут скачены ---
+
+# Параметры запуска, какие dimentions брать в рассмотрение. Варианты 1 - все (GA+Custom), 2 - только GA, 3 - только Custom
+options_ga_and_custom_dimentions: 1
+
+# Ключевые Dimentions - по ним будет выполняться слияние
+list_dimentions_keys : ['ga:dateHourMinute', 'ga:clientid', 'ga:sessionCount']
+
+# Все остальные Dimentions
+list_dimentions : ['ga:landingPagePath', 'ga:exitPagePath', 'ga:referralPath', 'ga:fullReferrer', 'ga:deviceCategory', 'ga:sourceMedium', 'ga:browser',  'ga:browserVersion',  'ga:browserSize',  'ga:country',  'ga:city',  'ga:channelGrouping', 'ga:operatingSystem', 'ga:operatingSystemVersion']
+
+# Специальные Dimentions, которые нельзя запускать в общем пуле. Здесь необходимо писать пары  [[Dimention1, Metric1],[Dimention2, Metric2]]
+list_of_lists_special_dimentions_metrics : [['ga:pagePath','ga:timeOnPage']] 
+
+# Все Metrics 
+list_metrics : ['ga:sessions', 'ga:timeOnPage', 'ga:hits', 'ga:pageviews', 'ga:users', 'ga:transactions', 'ga:productAddsToCart', 'ga:transactionRevenue', 'ga:itemQuantity', 'ga:quantityAddedToCart', 'ga:sessionDuration']
+
+# Список Metrics с типом данных "numeric"
+list_metrics_numeric : ['ga:transactionRevenue', 'ga:sessionDuration', 'ga:timeOnPage']
+
+# Резервная метрика. Применяется, когда metrics не хватает на все dimentions(Требование GA: должна быть хотя бы одна метрика – иначе ошибка)
+# ОБЯЗАТЕЛЬНО должна быть из списка list_metrics. 
+reserve_metric : 'ga:sessions'
+
+# CustomDimentions - metrics (Список списков )
+list_of_lists_customdimentions_metrics : [['ga:dimension9','ga:users']]
+
+# Фильтрация данных (в т.ч.по указанным "hostname")
+filters : ga:hostname==ecco.ru
+# filters : ga:hostname==ecco.ru;ga:hour==01
+
+# ОТДЕЛЬНЫЕ Dimentions, связанные с контекстом "event..."
+list_dimentions_event : ['ga:eventCategory', 'ga:eventAction', 'ga:eventLabel']
+
+# Список Metrics ТОЛЬКО для Dimentions, связанные с контекстом "event..."
+list_metrics_event :  ['ga:sessions', 'ga:totalEvents', 'ga:uniqueEvents']

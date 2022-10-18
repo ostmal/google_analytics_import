@@ -1,0 +1,73 @@
+##########################################################################################
+#   Конфигурационный файл для GA - User Activity
+##########################################################################################
+
+############ Параметры доступа к GA
+key_file_location : 111111111111111111111111111111.json
+
+
+############ Параметры доступа к БД
+
+database: postgres
+user: postgres
+password: ***********
+host: localhost
+
+# Схема
+schema: ost
+
+# Префикс таблиц
+table_prefix : ga3_ua
+
+
+############ Общие параметры
+
+# Путь к файлам csv
+path_csv: csv_ua/
+
+
+############ Параметры этапа 1: считывание массива clientid-transactionsиз GA 
+
+# Записывать в файл scv (yes/no)
+stage1_write_to_csv: yes
+
+# Записывать в БД (yes/no)
+stage1_write_to_db: yes
+
+# Наименование таблицы, куда скачиваются clientid-transactions
+table_name_clientid_transactions : clientid_transactions
+
+# Параметры запроса (report)
+report_view_id : '75512634'   
+report_start_date : '2022-05-01'
+report_end_date : '2022-05-20'
+report_dimentions : ['ga:clientid']
+report_metrics : ['ga:transactions'] 
+report_filters : 'ga:transactions>6'
+
+
+############ Параметры этапа 2: вызов функционала User Activity GA и сохранение результатов по каждому CLIENT_ID 
+
+# Читать из БД или CSV-файла (1 - БД, 2 - CSV-файл)
+stage2_read_from: 1
+
+# Записывать в файл scv (yes/no)
+stage2_write_to_csv: yes
+
+# Записывать в БД (yes/no)
+stage2_write_to_db: yes
+
+# Параметры запроса (user_activity)
+ua_view_id : '75512634'
+ua_start_date : '2022-03-13'
+ua_end_date : '2022-05-13'
+
+# Записывать в итоговый файл CustomDimensions
+custom_dimensions : yes
+
+# Список CustomDimensions, которые записывать в итоговый файл. Если список пустой ([]) - записывать ВСЕ CustomDimensions
+custom_dimensions_list : [1,2]
+
+# Размер порции данных clientid для обработки
+frame_size_clientid : 100
+
