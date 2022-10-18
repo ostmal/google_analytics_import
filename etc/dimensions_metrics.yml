@@ -26,8 +26,7 @@ reserve_metric : 'ga:sessions'
 list_of_lists_customdimentions_metrics : [['ga:dimension9','ga:users']]
 
 # Фильтрация данных (в т.ч.по указанным "hostname")
-filters : ga:hostname==ecco.ru
-# filters : ga:hostname==ecco.ru;ga:hour==01
+filters : ga:hostname==my_site.ru
 
 # ОТДЕЛЬНЫЕ Dimentions, связанные с контекстом "event..."
 list_dimentions_event : ['ga:eventCategory', 'ga:eventAction', 'ga:eventLabel']
