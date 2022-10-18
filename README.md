@@ -1,2 +1,6 @@
-# google_analytics_import
-Скрипт для импорта данных из Google Analytics-3 и скрипт для работы с функционалом User Activity Google Analytics-3
+# Общее описание
+Скрипт для импорта данных из Google Analytics-3 и скрипт для работы с функционалом User Activity Google Analytics-3.
+Описание работы содержится в папке /docs
+# Установка
+* Переписать все папки и файлы
+* Для установки окружения запустить: pip install -r requirements.txt
